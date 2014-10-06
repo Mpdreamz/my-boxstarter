@@ -1,4 +1,4 @@
-my-boxstarter
-=============
+This is my personal development boxstarter setup script. 
 
-My boxstarter script with dependencies
+
+#[CLICK TO INSTALL](http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/boxstarter.txt)
