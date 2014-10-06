@@ -32,7 +32,12 @@ cinst linqpad4
 cinst consolez
 cinst SourceCodePro
 
-#-- bash setup ---------
+cinst nodejs.install
+Write-BoxstarterMessage "fixing bug in nodejs installer"
+New-Item -path "$env:APPDATA\npm" -type directory -force
+#npm install -g esvm
+
+#-- Customizing applications ---------
 Write-BoxstarterMessage "Setting up bash profile and prompt.."
 Get-ChocolateyWebFile '.bashrc' "$env:USERPROFILE\.bashrc" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/.bashrc'
 Get-ChocolateyWebFile '.windows-bash-powerline.sh' "$env:USERPROFILE\.windows-bash-powerline.sh" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/.windows-bash-powerline.sh'
@@ -46,11 +51,11 @@ Get-ChocolateyWebFile 'cygncursesw++w-10.dll' "$($Boxstarter.programFiles86)\Git
 Get-ChocolateyWebFile 'cygintl-8.dll' "$($Boxstarter.programFiles86)\Git\bin\cygintl-8.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygintl-8.dll'
 Get-ChocolateyWebFile 'cygiconv-2.dll' "$($Boxstarter.programFiles86)\Git\bin\cygiconv-2.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygiconv-2.dll'
 
+Write-BoxstarterMessage "Hacking in cygwin emulation"
 $cygwinTermFolder = "$($Boxstarter.programFiles86)\Git\usr\share\terminfo\63"
 New-Item -path $cygwinTermFolder -type directory -force
 Get-ChocolateyWebFile 'cons25' "$($cygwinTermFolder)\cons25" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cons25'
 Get-ChocolateyWebFile 'cygwin' "$($cygwinTermFolder)\cygwin" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygwin'
-
 
 $consolezDir = Join-Path "$env:ChocolateyInstall\lib" (Get-ChildItem "$env:ChocolateyInstall\lib" | ?{$_.name -match "^consolez\.\d+"})
 Write-BoxstarterMessage "Copying personal ConsoleZ settings to $consolezDir\tools..."
@@ -60,6 +65,9 @@ Get-ChocolateyWebFile 'scriptcs.ico' "$consolezDir\tools\scriptcs.ico" 'https://
 
 Write-BoxstarterMessage "Setting up total commander just the way i like it."
 Get-ChocolateyWebFile 'wincmd' "$env:APPDATA\GHISLER\wincmd.ini" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/totalcmd/wincmd.ini'
+
+Write-BoxstarterMessage "Creating projects folder in root"
+New-Item -path "C:\Projects" -type directory -force
 
 #-- Visual Studio ------
 #cinst VisualStudio2013Professional -InstallArguments "/Features:'WebTools'
