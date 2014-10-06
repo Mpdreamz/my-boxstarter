@@ -42,7 +42,7 @@ Get-ChocolateyWebFile 'tput.exe' "$($Boxstarter.programFiles86)\Git\bin\tput.exe
 Get-ChocolateyWebFile 'cygwin1.dll' "$($Boxstarter.programFiles86)\Git\bin\cygwin1.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygwin1.dll'
 Get-ChocolateyWebFile 'cygpcre-1.dll' "$($Boxstarter.programFiles86)\Git\bin\cygpcre-1.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygpcre-1.dll'
 Get-ChocolateyWebFile 'cygncursesw-10.dll' "$($Boxstarter.programFiles86)\Git\bin\cygncursesw-10.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygncursesw-10.dll'
-Get-ChocolateyWebFile 'cygncursesw++w-10.dll' "$($Boxstarter.programFiles86)\Git\bin\cygncursesw++w-10.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygncursesw++w-10.dll'
+Get-ChocolateyWebFile 'cygncursesw++w-10.dll' "$($Boxstarter.programFiles86)\Git\bin\cygncursesw++w-10.dll" 'https://github.com/Mpdreamz/my-boxstarter/blob/master/cygwin-missing/cygncurses%2B%2Bw-10.dll'
 Get-ChocolateyWebFile 'cygintl-8.dll' "$($Boxstarter.programFiles86)\Git\bin\cygintl-8.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygintl-8.dll'
 
 $consolezDir = Join-Path "$env:ChocolateyInstall\lib" (Get-ChildItem "$env:ChocolateyInstall\lib" | ?{$_.name -match "^consolez\.\d+"})
