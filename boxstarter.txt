@@ -44,6 +44,13 @@ Get-ChocolateyWebFile 'cygpcre-1.dll' "$($Boxstarter.programFiles86)\Git\bin\cyg
 Get-ChocolateyWebFile 'cygncursesw-10.dll' "$($Boxstarter.programFiles86)\Git\bin\cygncursesw-10.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygncursesw-10.dll'
 Get-ChocolateyWebFile 'cygncursesw++w-10.dll' "$($Boxstarter.programFiles86)\Git\bin\cygncursesw++w-10.dll" 'https://github.com/Mpdreamz/my-boxstarter/blob/master/cygwin-missing/cygncurses%2B%2Bw-10.dll'
 Get-ChocolateyWebFile 'cygintl-8.dll' "$($Boxstarter.programFiles86)\Git\bin\cygintl-8.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygintl-8.dll'
+Get-ChocolateyWebFile 'cygiconv-2.dll' "$($Boxstarter.programFiles86)\Git\bin\cygiconv-2.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygiconv-2.dll'
+
+$cygwinTermFolder = "$($Boxstarter.programFiles86)\Git\usr\share\terminfo\63"
+New-Item -path $cygwinTermFolder -type directory -force
+Get-ChocolateyWebFile 'cons25' "$($cygwinTermFolder)\cons25" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cons25'
+Get-ChocolateyWebFile 'cygwin' "$($cygwinTermFolder)\cygwin" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygwin'
+
 
 $consolezDir = Join-Path "$env:ChocolateyInstall\lib" (Get-ChildItem "$env:ChocolateyInstall\lib" | ?{$_.name -match "^consolez\.\d+"})
 Write-BoxstarterMessage "Copying personal ConsoleZ settings to $consolezDir\tools..."
