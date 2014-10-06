@@ -120,7 +120,7 @@
 		<hotkey ctrl="0" shift="0" alt="0" extended="0" code="0" command="externalcmd8"/>
 		<hotkey ctrl="0" shift="0" alt="0" extended="0" code="0" command="externalcmd9"/>
 		<hotkey ctrl="0" shift="0" alt="0" extended="0" code="0" command="externalcmd10"/>
-		<hotkey ctrl="1" shift="0" alt="0" extended="0" code="192" command="activate" win="0"/>
+		<hotkey ctrl="1" shift="0" alt="0" extended="0" code="226" command="activate" win="0"/>
 	</hotkeys>
 	<mouse>
 		<actions>
