@@ -1,0 +1,65 @@
+#-- Winconfig ----------
+Set-ExplorerOptions -showHidenFilesFoldersDrives -showProtectedOSFiles -showFileExtensions
+
+Set-StartScreenOptions -EnableBootToDesktop -EnableDesktopBackgroundOnStart -EnableShowStartOnActiveScreen -EnableSearchEverywhereInAppsView -EnableListDesktopAppsFirst
+
+Set-CornerNavigationOptions -DisableUpperRightCornerShowCharms -DisableUpperLeftCornerSwitchApps -DisableUsePowerShellOnWinX
+
+Set-TaskbarOptions -Size Small -Lock -Dock Bottom
+
+Write-BoxstarterMessage "Setting Taskbar buttons to Never Combine..."
+$taskbarButtonsRegKey = 'hkcu:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
+if ( ( ( Get-ItemProperty -path $taskbarButtonsRegKey ).TaskbarGlomLevel ) -Ne 2 )
+{
+    Set-ItemProperty -Path $taskbarButtonsRegKey -Name "TaskbarGlomLevel" -Value 00000002
+    Invoke-Reboot
+}
+
+Enable-RemoteDesktop
+Disable-InternetExplorerESC
+Disable-MicrosoftUpdate
+Disable-UAC
+
+#-- Chocolatey ---------
+cinst GoogleChrome
+cinst fiddler4
+cinst git.install
+cinst git.commandline
+cinst javaruntime
+cinst TotalCommander
+cinst Atom
+cinst linqpad4
+cinst consolez
+
+#-- bash setup ---------
+Get-ChocolateyWebFile '.bashrc' '${env:USERPROFILE}/.bashrc' 'https://gist.githubusercontent.com/Mpdreamz/90ea140f40dc37206730/raw/a0a85b5a3f8ffd41d43c27059b1d6fb3b8495cda/windows.bashrc'
+Get-ChocolateyWebFile 'powerline for windows' '${env:USERPROFILE}/.windows-bash-powerline.sh' 'https://gist.githubusercontent.com/Mpdreamz/90ea140f40dc37206730/raw/443799c3dcb15accbd80c19b80cff525626fdd3f/windows-bash-powerline.sh'
+
+
+#-- Visual Studio ------
+#cinst VisualStudio2013Professional -InstallArguments "/Features:'WebTools'
+#cinstm VS2013SDK
+
+#-- VS Addins ----------
+cinst ncrunch2.vs2013
+cinst resharper
+#not sure how to do this quietly
+#Install-ChocolateyPackage 'Entrian Code Search' 'exe' '/s' 'http://entrian.com/source-search/Entrian-Source-Search-1.4.21-Setup.exe' 
+
+#-- VS Extensions ------
+Install-ChocolateyVsixPackage "EditorConfig" "http://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328/file/75539/12/EditorConfigPlugin.vsix"
+Install-ChocolateyVsixPackage "Hide Main Menu" "http://visualstudiogallery.msdn.microsoft.com/bdbcffca-32a6-4034-8e89-c31b86ad4813/file/18183/2/HideMenu.vsix"
+Install-ChocolateyVsixPackage "Hide Main Menu" "http://visualstudiogallery.msdn.microsoft.com/bdbcffca-32a6-4034-8e89-c31b86ad4813/file/18183/2/HideMenu.vsix"
+Install-ChocolateyVsixPackage "Visual F# Power Tools" "http://visualstudiogallery.msdn.microsoft.com/136b942e-9f2c-4c0b-8bac-86d774189cff/file/124201/20/FSharpVSPowerTools.vsix"
+Install-ChocolateyVsixPackage "ViEmu" "http://www.viemu.com/ViEmuVS2013-3.2.1.vsix"
+
+#IIS
+cinst IIS-WebServerRole -source windowsfeatures
+cinst IIS-HttpCompressionDynamic -source windowsfeatures
+cinst IIS-ManagementScriptingTools -source windowsfeatures
+cinst IIS-WindowsAuthentication -source windowsfeatures
+
+#-- POST install touches -------
+
+#taskbar pins
+Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Google\Chrome\Application\chrome.exe"
