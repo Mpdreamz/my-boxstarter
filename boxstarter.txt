@@ -30,10 +30,11 @@ cinst TotalCommander
 cinst Atom
 cinst linqpad4
 cinst consolez
+cinst SourceCodePro
 
 #-- bash setup ---------
-Get-ChocolateyWebFile '.bashrc' '${env:USERPROFILE}/.bashrc' 'https://gist.githubusercontent.com/Mpdreamz/90ea140f40dc37206730/raw/a0a85b5a3f8ffd41d43c27059b1d6fb3b8495cda/windows.bashrc'
-Get-ChocolateyWebFile 'powerline for windows' '${env:USERPROFILE}/.windows-bash-powerline.sh' 'https://gist.githubusercontent.com/Mpdreamz/90ea140f40dc37206730/raw/443799c3dcb15accbd80c19b80cff525626fdd3f/windows-bash-powerline.sh'
+Get-ChocolateyWebFile '.bashrc' "$env:USERPROFILE\.bashrc" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/.bashrc'
+Get-ChocolateyWebFile '.windows-bash-powerline.sh' "$env:USERPROFILE\.windows-bash-powerline.sh" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/.windows-bash-powerline.sh'
 
 
 #-- Visual Studio ------
