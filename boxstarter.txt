@@ -35,6 +35,13 @@ cinst SourceCodePro
 #-- bash setup ---------
 Get-ChocolateyWebFile '.bashrc' "$env:USERPROFILE\.bashrc" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/.bashrc'
 Get-ChocolateyWebFile '.windows-bash-powerline.sh' "$env:USERPROFILE\.windows-bash-powerline.sh" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/.windows-bash-powerline.sh'
+Get-ChocolateyWebFile 'wincmd' "$env:APPDATA\GHISLER\wincmd.ini" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/totalcmd/wincmd.ini'
+
+$consolezDir = Join-Path "$env:ChocolateyInstall\lib" (Get-ChildItem "$env:ChocolateyInstall\lib" | ?{$_.name -match "^consolez\.\d+"})
+Write-BoxstarterMessage "Copying personal ConsoleZ settings to $consolezDir\tools..."
+Get-ChocolateyWebFile 'console.xml' "$consolezDir\tools\console.xml" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/consolez/console.xml'
+Get-ChocolateyWebFile 'elasticsearch.ico' "$consolezDir\tools\elasticsearch.ico" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/consolez/elasticsearch.ico'
+Get-ChocolateyWebFile 'scriptcs.ico' "$consolezDir\tools\scriptcs.ico" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/consolez/scriptcs.ico'
 
 
 #-- Visual Studio ------
