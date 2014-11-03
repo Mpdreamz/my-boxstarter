@@ -5,6 +5,7 @@ This is my personal development boxstarter setup script.
 
 
 # Manual steps post intall
+- Install VMWare Tools
 - `git config --global user.name "Martijn Laarman"`
 - `git config --global user.email "mpdreamz+removeme gmail.com"`
 - create SSH keys on the machine:
