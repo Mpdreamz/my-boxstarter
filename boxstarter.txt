@@ -25,6 +25,7 @@ cinst GoogleChrome
 cinst fiddler4
 cinst git.install
 cinst git.commandline
+cinst TortoiseGit
 cinst javaruntime
 cinst TotalCommander
 cinst Atom
