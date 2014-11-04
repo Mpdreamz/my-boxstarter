@@ -45,6 +45,7 @@ Get-ChocolateyWebFile '.windows-bash-powerline.sh' "$env:USERPROFILE\.windows-ba
 
 Write-BoxstarterMessage "Hacking in tput support.."
 Get-ChocolateyWebFile 'tput.exe' "$($Boxstarter.programFiles86)\Git\bin\tput.exe" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/tput.exe'
+Get-ChocolateyWebFile 'grep.exe' "$($Boxstarter.programFiles86)\Git\bin\tput.exe" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/grep.exe'
 Get-ChocolateyWebFile 'cygwin1.dll' "$($Boxstarter.programFiles86)\Git\bin\cygwin1.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygwin1.dll'
 Get-ChocolateyWebFile 'cygpcre-1.dll' "$($Boxstarter.programFiles86)\Git\bin\cygpcre-1.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygpcre-1.dll'
 Get-ChocolateyWebFile 'cygncursesw-10.dll' "$($Boxstarter.programFiles86)\Git\bin\cygncursesw-10.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygncursesw-10.dll'
@@ -98,3 +99,5 @@ cinst IIS-WindowsAuthentication -source windowsfeatures
 Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Google\Chrome\Application\chrome.exe"
 Install-ChocolateyPinnedTaskBarItem "c:\totalcmd\totalcmd64.exe"
 Install-ChocolateyPinnedTaskBarItem "$consolezDir\tools\Console.exe"
+
+Invoke-Reboot
