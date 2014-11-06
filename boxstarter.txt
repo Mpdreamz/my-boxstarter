@@ -32,6 +32,7 @@ cinst Atom
 cinst linqpad4
 cinst consolez
 cinst SourceCodePro
+cinst CMake
 
 cinst nodejs.install
 Write-BoxstarterMessage "fixing bug in nodejs installer"
