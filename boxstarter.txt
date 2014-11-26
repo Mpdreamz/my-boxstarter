@@ -32,6 +32,7 @@ cinst Atom
 cinst linqpad4
 cinst consolez
 cinst SourceCodePro
+cinst CMake
 
 cinst nodejs.install
 Write-BoxstarterMessage "fixing bug in nodejs installer"
@@ -95,6 +96,13 @@ cinst IIS-ManagementScriptingTools -source windowsfeatures
 cinst IIS-WindowsAuthentication -source windowsfeatures
 
 #-- POST install touches -------
+
+#git config
+git config --global push.default simple
+git config --global merge.tool tortoisemerge
+git config --global mergetool.tortoisemerge.cmd '"C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe" -base:"$BASE" -theirs:"$REMOTE" -mine:"$LOCAL" -merged:"$MERGED"'
+git config --global mergetool.keepBackup false
+git config --global mergetool.prompt false
 
 #taskbar pins
 Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Google\Chrome\Application\chrome.exe"
