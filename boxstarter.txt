@@ -41,6 +41,7 @@ New-Item -path "$env:APPDATA\npm" -type directory -force
 #-- Customizing applications ---------
 Write-BoxstarterMessage "Setting up bash profile and prompt.."
 Get-ChocolateyWebFile '.bashrc' "$env:USERPROFILE\.bashrc" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/.bashrc'
+Get-ChocolateyWebFile '.viemurc' "$env:USERPROFILE\.viemurc" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/.viemurc'
 Get-ChocolateyWebFile '.windows-bash-powerline.sh' "$env:USERPROFILE\.windows-bash-powerline.sh" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/.windows-bash-powerline.sh'
 
 Write-BoxstarterMessage "Hacking in tput support.."
