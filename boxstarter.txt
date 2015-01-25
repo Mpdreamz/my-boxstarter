@@ -37,7 +37,7 @@ cinst CMake
 cinst nodejs.install
 Write-BoxstarterMessage "fixing bug in nodejs installer"
 New-Item -path "$env:APPDATA\npm" -type directory -force
-#npm install -g esvm
+npm install -g esvm
 
 #-- Customizing applications ---------
 Write-BoxstarterMessage "Setting up bash profile and prompt.."
