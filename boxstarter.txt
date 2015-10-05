@@ -32,6 +32,8 @@ cinst Atom
 cinst linqpad5
 cinst consolez
 cinst SourceCodePro
+cinst wizmouse
+cinst switcheroo
 #cinst CMake
 
 #cinst nodejs.install
