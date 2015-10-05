@@ -1,11 +1,11 @@
 #-- Winconfig ----------
-#Set-ExplorerOptions -showHidenFilesFoldersDrives -showProtectedOSFiles -showFileExtensions
+Set-ExplorerOptions -showHidenFilesFoldersDrives -showProtectedOSFiles -showFileExtensions
 
 #Set-StartScreenOptions -EnableBootToDesktop -EnableDesktopBackgroundOnStart -EnableShowStartOnActiveScreen -EnableSearchEverywhereInAppsView -EnableListDesktopAppsFirst
 
 #Set-CornerNavigationOptions -DisableUpperRightCornerShowCharms -DisableUpperLeftCornerSwitchApps -DisableUsePowerShellOnWinX
 
-#Set-TaskbarOptions -Size Small -Lock -Dock Bottom
+Set-TaskbarOptions -Size Small -Lock -Dock Bottom
 
 #Write-BoxstarterMessage "Setting Taskbar buttons to Never Combine..."
 #$taskbarButtonsRegKey = 'hkcu:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
