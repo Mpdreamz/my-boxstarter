@@ -29,15 +29,15 @@ cinst TortoiseGit
 cinst javaruntime
 cinst TotalCommander
 cinst Atom
-cinst linqpad4
+cinst linqpad5
 cinst consolez
 cinst SourceCodePro
-cinst CMake
+#cinst CMake
 
-cinst nodejs.install
-Write-BoxstarterMessage "fixing bug in nodejs installer"
-New-Item -path "$env:APPDATA\npm" -type directory -force
-npm install -g esvm
+#cinst nodejs.install
+#Write-BoxstarterMessage "fixing bug in nodejs installer"
+#New-Item -path "$env:APPDATA\npm" -type directory -force
+#npm install -g esvm
 
 #-- Customizing applications ---------
 Write-BoxstarterMessage "Setting up bash profile and prompt.."
@@ -78,22 +78,22 @@ New-Item -path "C:\Projects" -type directory -force
 #cinstm VS2013SDK
 
 #-- VS Addins ----------
-cinst ncrunch2.vs2013
-cinst resharper
+#cinst ncrunch2.vs2013
+#cinst resharper
 #not sure how to do this quietly
 #Install-ChocolateyPackage 'Entrian Code Search' 'exe' '/s' 'http://entrian.com/source-search/Entrian-Source-Search-1.4.21-Setup.exe' 
 
 #-- VS Extensions ------
-Install-ChocolateyVsixPackage "EditorConfig" "http://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328/file/75539/12/EditorConfigPlugin.vsix"
-Install-ChocolateyVsixPackage "Hide Main Menu" "http://visualstudiogallery.msdn.microsoft.com/bdbcffca-32a6-4034-8e89-c31b86ad4813/file/18183/2/HideMenu.vsix"
-Install-ChocolateyVsixPackage "Visual F# Power Tools" "http://visualstudiogallery.msdn.microsoft.com/136b942e-9f2c-4c0b-8bac-86d774189cff/file/124201/20/FSharpVSPowerTools.vsix"
-Install-ChocolateyVsixPackage "ViEmu" "http://www.viemu.com/ViEmuVS2013-3.2.1.vsix"
+#Install-ChocolateyVsixPackage "EditorConfig" "http://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328/file/75539/12/EditorConfigPlugin.vsix"
+#Install-ChocolateyVsixPackage "Hide Main Menu" "http://visualstudiogallery.msdn.microsoft.com/bdbcffca-32a6-4034-8e89-c31b86ad4813/file/18183/2/HideMenu.vsix"
+#Install-ChocolateyVsixPackage "Visual F# Power Tools" "http://visualstudiogallery.msdn.microsoft.com/136b942e-9f2c-4c0b-8bac-86d774189cff/file/124201/20/FSharpVSPowerTools.vsix"
+#Install-ChocolateyVsixPackage "ViEmu" "http://www.viemu.com/ViEmuVS2013-3.2.1.vsix"
 
 #IIS
-cinst IIS-WebServerRole -source windowsfeatures
-cinst IIS-HttpCompressionDynamic -source windowsfeatures
-cinst IIS-ManagementScriptingTools -source windowsfeatures
-cinst IIS-WindowsAuthentication -source windowsfeatures
+#cinst IIS-WebServerRole -source windowsfeatures
+#cinst IIS-HttpCompressionDynamic -source windowsfeatures
+#cinst IIS-ManagementScriptingTools -source windowsfeatures
+#cinst IIS-WindowsAuthentication -source windowsfeatures
 
 #-- POST install touches -------
 
