@@ -48,7 +48,7 @@ Get-ChocolateyWebFile '.viemurc' "$env:USERPROFILE\.viemurc" 'https://raw.github
 Get-ChocolateyWebFile '.windows-bash-powerline.sh' "$env:USERPROFILE\.windows-bash-powerline.sh" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/.windows-bash-powerline.sh'
 
 Write-BoxstarterMessage "Hacking in tput support.."
-Get-ChocolateyWebFile 'tput.exe' "$($Boxstarter.programFiles86)\Git\bin\tput.exe" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/tput.exe'
+#Get-ChocolateyWebFile 'tput.exe' "$($Boxstarter.programFiles86)\Git\bin\tput.exe" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/tput.exe'
 Get-ChocolateyWebFile 'grep.exe' "$($Boxstarter.programFiles86)\Git\bin\tput.exe" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/grep.exe'
 Get-ChocolateyWebFile 'cygwin1.dll' "$($Boxstarter.programFiles86)\Git\bin\cygwin1.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygwin1.dll'
 Get-ChocolateyWebFile 'cygpcre-1.dll' "$($Boxstarter.programFiles86)\Git\bin\cygpcre-1.dll" 'https://raw.githubusercontent.com/Mpdreamz/my-boxstarter/master/cygwin-missing/cygpcre-1.dll'
