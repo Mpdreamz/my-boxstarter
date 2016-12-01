@@ -5,7 +5,12 @@ This is my personal development boxstarter setup script.
 
 
 # Manual steps post intall
-- Install VMWare Tools
-- `git config --global user.name "Martijn Laarman"`
-- `git config --global user.email "mpdreamz+removeme gmail.com"`
+
+- power up bash once
+- fuddle with dotfiles 
+- install fonts
+- run and setup hacks
+- move files in the right location
+
+
 - create [SSH keys on the machine](https://help.github.com/articles/generating-ssh-keys/#platform-windows)

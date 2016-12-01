@@ -1,0 +1,51 @@
+[push]
+	default = upstream
+[core]
+	trustctime = false
+	editor = vim
+	filemode = false
+	autocrlf = input
+	preloadindex = true
+	fscache = true
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color]
+	ui = true
+[color]
+	ui = always
+[color "diff"]
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = "red bold 52"
+	newNormal = "green bold"
+	newHighlight = "green bold 22"
+[credential]
+	helper = cache --timeout=3600
+[merge]
+	tool = vimdiff
+[mergetool]
+	keeptemporaries = false
+	keepbackups = false
+	prompt = false
+	trustexitcode = false
+[alias]
+	last = log -1 --stat
+	cp = cherry-pick
+	co = checkout
+	cl = clone
+	ci = commit
+	st = status -sb
+	br = branch
+	unstage = reset HEAD --
+	dc = diff --cached
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+[user]
+	name = Mpdreamz
+	email = mpdreamz@gmail.com
+[gc]
+	auto = 256
