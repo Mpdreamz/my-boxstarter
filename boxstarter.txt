@@ -40,6 +40,8 @@ cinst -y resharper.platform
 cinst -y windirstat
 cinst -y wireshark
 cinst -y wixtoolset
+cinst -y nodejs.install
+cinst -y npm
 
 #-- Tools that i need to manually install -----------
 #cinst -y trackballworks
@@ -49,7 +51,6 @@ cinst -y wixtoolset
 #cinst -y keybase
 #cinst -y visualstudio2017community
 #cinst -y ncrunch2017
-#cinst -y startkiller
 #cinst -y startisback++
 #cinst -y rider
 

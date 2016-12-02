@@ -59,7 +59,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -92,7 +92,7 @@ export KEYTIMEOUT=1
 
 function ssh_login() {
 	eval $(ssh-agent -s)
-	ssh-add  /cygdrive/c/Users/mpdreamz/.ssh/id_rsa
+	ssh-add  ~/.ssh/id_rsa
 }
 function fancy_git_log()
 {
