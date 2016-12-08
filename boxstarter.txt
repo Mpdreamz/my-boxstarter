@@ -67,6 +67,7 @@ Get-ChocolateyWebFile 'wincmd' "$env:APPDATA\GHISLER\wincmd.ini" 'https://raw.gi
 #-- POST install touches -------
 
 #git config
+Write-BoxstarterMessage "Setting up git.."
 git config --global push.default simple
 git config --global merge.tool tortoisemerge
 git config --global mergetool.tortoisemerge.cmd '"C:/Program Files/TortoiseGit/bin/TortoiseGitMerge.exe" -base:"$BASE" -theirs:"$REMOTE" -mine:"$LOCAL" -merged:"$MERGED"'
@@ -83,6 +84,7 @@ Push-Location
 cd C:\Projects
 git clone https://github.com/Mpdreamz/my-boxstarter.git
 cd C:\Projects\elastic
+Write-BoxstarterMessage "cloning projects"
 git clone -b 1.x git@github.com:elastic/elasticsearch-net.git net-1
 git clone -b 2.x git@github.com:elastic/elasticsearch-net.git net-2
 git clone -b 5.x git@github.com:elastic/elasticsearch-net.git net-5
