@@ -26,7 +26,7 @@ cinst -y fiddler4
 cinst -y git.install
 cinst -y git.commandline
 cinst -y TortoiseGit
-cinst -y TotalCommander
+cinst -y TotalCommander --ignore-checksums
 cinst -y Atom
 cinst -y linqpad5
 cinst -y conemu
@@ -35,15 +35,15 @@ cinst -y SourceCodePro
 #cinst -y wizmouse
 cinst -y autohotkey
 cinst -y intellijidea-community
-cinst -y gradle -version 2.13
+cinst -y gradle -version 2.13 --allow-empty-checksums 
 cinst -y resharper.platform
 cinst -y windirstat
 cinst -y wireshark
-cinst -y wixtoolset
-cinst -y nodejs.install
-cinst -y npm
-cinst -y microsoft-build-tools
-cinst -y slack
+cinst -y wixtoolset --allow-empty-checksums
+cinst -y nodejs.install --allow-empty-checksums
+cinst -y npm --allow-empty-checksums
+cinst -y microsoft-build-tools --allow-empty-checksums
+cinst -y slack --allow-empty-checksums
 
 #-- Tools that i need to manually install -----------
 #cinst -y trackballworks
