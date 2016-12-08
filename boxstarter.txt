@@ -31,7 +31,8 @@ cinst -y Atom
 cinst -y linqpad5
 cinst -y conemu
 cinst -y SourceCodePro
-cinst -y wizmouse
+#no longer needed on dell with decent touchpad
+#cinst -y wizmouse
 cinst -y autohotkey
 cinst -y intellijidea-community
 cinst -y gradle -version 2.13
