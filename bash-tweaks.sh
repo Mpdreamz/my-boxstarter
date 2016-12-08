@@ -37,6 +37,7 @@ sudo apt-get install -y nodejs
 sudo npm install -g diff-so-fancy
 sudo npm install -g azure
 sudo npm install -g azure-cli
+sudo npm install -g eclint
 
 # ssh-keygen
 ssh-keygen -t rsa -b 4096 -C "mpdreamz@gmail.com"
