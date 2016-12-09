@@ -35,7 +35,7 @@ cinst -y SourceCodePro
 #cinst -y wizmouse
 cinst -y autohotkey
 cinst -y intellijidea-community
-cinst -y gradle -version 2.13 --allow-empty-checksums 
+cinst -y gradle --version 2.13 --allow-empty-checksums 
 cinst -y resharper.platform
 cinst -y windirstat
 cinst -y wireshark
