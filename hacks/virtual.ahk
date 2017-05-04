@@ -1,3 +1,5 @@
+SetCapsLockState, alwaysoff
+
 ; Globals
 DesktopCount = 2        ; Windows starts with 2 desktops at boot
 CurrentDesktop = 1      ; Desktop count is 1-indexed (Microsoft numbers them this way)
@@ -75,17 +77,26 @@ getSessionId()
 ;
 switchDesktopByNumber(targetDesktop)
 {
-    global CurrentDesktop, DesktopCount
+    global CurrentDesktop, DesktopCount, capslockAction
+   capslockAction := 1
 
     ; Re-generate the list of desktops and where we fit in that. We do this because
     ; the user may have switched desktops via some other means than the script.
     mapDesktopsFromRegistry()
+
+    if (targetDesktop > DesktopCount) {
+	targetDesktop := 1
+    }
+    if (targetDesktop < 1) {
+	targetDesktop := DesktopCount
+    }
 
     ; Don't attempt to switch to an invalid desktop
     if (targetDesktop > DesktopCount || targetDesktop < 1) {
         OutputDebug, [invalid] target: %targetDesktop% current: %CurrentDesktop%
         return
     }
+
 
     ; Go right until we reach the desktop we want
     while(CurrentDesktop < targetDesktop) {
@@ -132,22 +143,18 @@ deleteVirtualDesktop()
 
 OSD(text)
 {
-	#Persistent
-	; borderless, no progressbar, font size 25, color text 009900
-	Progress, hide Y600 W1000 b zh0 cw000000 FM50 CT00BB00,, %text%, AutoHotKeyProgressBar, Backlash BRK
-	WinSet, TransColor, cw000000 255, AutoHotKeyProgressBar
-	Progress, show
-	SetTimer, RemoveToolTip, 200
-
+	IfWinActive, ahk_class VirtualConsoleClass
+        {
+	    Send !{ESC}
+	}
+	;WinActivate, Program Manager
 	Return
-
 
 RemoveToolTip:
 	SetTimer, RemoveToolTip, Off
 	Progress, Off
 	return
 }
-
 ; Main
 SetKeyDelay, 75
 mapDesktopsFromRegistry()
@@ -155,6 +162,7 @@ OutputDebug, [loading] desktops: %DesktopCount% current: %CurrentDesktop%
 
 ; User config!
 ; This section binds the key combo to the switch/create/delete actions
+
 CapsLock & 1::switchDesktopByNumber(1)
 CapsLock & 2::switchDesktopByNumber(2)
 CapsLock & 3::switchDesktopByNumber(3)
@@ -164,6 +172,8 @@ CapsLock & 6::switchDesktopByNumber(6)
 CapsLock & 7::switchDesktopByNumber(7)
 CapsLock & 8::switchDesktopByNumber(8)
 CapsLock & 9::switchDesktopByNumber(9)
+CapsLock & l::switchDesktopByNumber(CurrentDesktop + 1)
+CapsLock & h::switchDesktopByNumber(CurrentDesktop - 1)
 
 ; Alternate keys for this config. Adding these because DragonFly (python) doesn't send CapsLock correctly.
 ^#n::switchDesktopByNumber(CurrentDesktop + 1)
@@ -172,3 +182,149 @@ CapsLock & 9::switchDesktopByNumber(9)
 ^#h::switchDesktopByNumber(CurrentDesktop - 1)
 ^#c::createVirtualDesktop()
 ^#d::deleteVirtualDesktop()
+
+capslockAction := 0
+capslockState :=0
+caps_start := A_TickCount
+caps_time := A_TickCount
+recording_time :=0
+
+~lwin up::return
+~CapsLock:: 
+{
+   if (recording_time = 0) 
+   {
+       caps_start := A_TickCount
+       recording_time := 1
+   }
+}
+return
+
+CapsLock Up::
+{
+   caps_time := A_TickCount - caps_start
+   recording_time := 0
+   if (capslockAction = 1)
+   {
+      capslockAction := 0
+      return
+   } 
+   if (caps_time > 200)
+   {
+	return
+   }
+   Send {esc}
+}
+return
+
+~capslock & r::
+{
+   capslockAction := 1
+   SetCapsLockState, alwaysOff
+}
+return
+
+; Mouse hotkeys
+; ---------------------------------------
+~CapsLock & d::
+{
+   capslockAction := 1
+   sendinput, {lbutton down}
+   keywait, d
+   sendinput, {lbutton up}
+}
+return
+
+~CapsLock & s::
+{
+   capslockAction := 1
+   sendinput, {rbutton down}
+   keywait, f
+   sendinput, {rbutton up}
+}
+return
+
+~CapsLock & a::
+{
+   	capslockAction := 1
+	MouseClick, Middle
+	keywait, s
+	MouseClick, Middle	
+}
+return
+
+; Window hotkeys
+; ---------------------------------------
+~CapsLock & w::
+{
+   capslockAction := 1
+   Send !{ESC}
+}
+return
+
+~CapsLock & o::
+{
+   capslockAction := 1
+   Send !{Space}
+   SetCapsLockState, alwaysoff
+}
+return
+
+~CapsLock & p::
+{
+   capslockAction := 1
+   Send ^{Space}
+   SetCapsLockState, alwaysoff
+}
+return
+; Edit hotkeys
+; ---------------------------------------
+~CapsLock & j::
+{
+   capslockAction := 1
+   Send #{Left}
+}
+return
+~CapsLock & k::
+{
+   capslockAction := 1
+   Send #{Right}
+}
+return
+~CapsLock & m::
+{
+    WinGet MX, MinMax, A
+    If MX
+          WinRestore A
+    Else WinMaximize A
+}
+return
+~CapsLock & x::
+{
+    WinClose A
+}
+return
+~CapsLock & q::
+{
+    WinKill A
+}
+return
+~CapsLock & b::
+{
+   capslockAction := 1
+   Send {PgUp}
+}
+return
+
+~CapsLock & f::
+{
+   capslockAction := 1
+   Send {PgDown}
+}
+return
+
+Escape::` 
+LShift & Escape::Send {~} 
+RShift & Escape::Send {~}
+LALT & Escape::Send {Escape} 
+RALT & Escape::Send {Escape}
