@@ -1,0 +1,8 @@
+set guifont=FuraCode_Nerd_Font:h12:cANSI:qDRAFT 
+set encoding=utf8
+set guioptions-=egmrLtT
+
+source c:\Users\Mpdreamz\AppData\Local\lxss\home\mpdreamz\.vimrc  
+
+colors koehler
+

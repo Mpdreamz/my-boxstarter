@@ -1,0 +1,30 @@
+
+#set surround
+
+set scrolloff=5
+set smartcase
+set incsearch
+
+map gd :action GotoDeclaration<CR>
+map gi :action GotoImplementation<CR>
+map gl :action JumpToLastChange<CR>
+map gb :action Back<CR>
+map gf :action Forward<CR>
+
+map gt :action GotoFile<CR>
+map ge :action RecentChangedFiles<CR>
+map gr :action RecentFiles<CR><CR>
+map gn :action GotoNextError<CR><CR>
+map gn :action GotoPreviousError<CR><CR>
+
+nnoremap qq :action Refactorings.QuickListPopupAction<cr> 
+
+nnoremap cre :action RenameElement<cr> 
+nnoremap cS :action ChangeSignature<cr> 
+nnoremap cts :action ChangeTypeSignature<cr>
+nnoremap qw :action ShowIntentionActions<cr>
+nnoremap qr :action Refactorings.QuickListPopupAction<cr>
+
+nnoremap tr :action RiderUnitTestRepeatPreviousRunAction<cr>
+
+map fu :action FindUsages<CR>
