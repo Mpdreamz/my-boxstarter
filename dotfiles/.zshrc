@@ -49,13 +49,15 @@ ZSH_THEME="babun-powerline"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+
+plugins=(git z)
 
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
-
+# include Z, yo 
+. ~/z.sh
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -86,7 +88,11 @@ export LANG=en_US.UTF-8
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode)
 
+HISTSIZE=10000 
+SAVEHIST=10000 
+HISTFILE=~/.zsh_history
 bindkey -v
+bindkey '^R' history-incremental-search-backward
 export KEYTIMEOUT=1
 #
 
@@ -108,3 +114,14 @@ alias pp='git pull'
 alias s='git status -s'
 alias ll='fancy_git_log'
 alias recent_commits='git log --pretty=oneline --abbrev-commit -n 10'
+
+function resolve_gui() {
+   "/mnt/c/Program Files/TortoiseGit/bin/TortoiseGitProc.exe" /command:resolve
+}
+
+function tgit() {
+   "/mnt/c/Program Files/TortoiseGit/bin/TortoiseGitProc.exe" /command:$1
+}
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/mpdreamz/.sdkman"
+[[ -s "/home/mpdreamz/.sdkman/bin/sdkman-init.sh" ]] && source "/home/mpdreamz/.sdkman/bin/sdkman-init.sh"

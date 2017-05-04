@@ -3,6 +3,7 @@ set nowritebackup
 set noswapfile
 set noundofile
 set autoread
+set hidden
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -10,8 +11,9 @@ let g:airline_powerline_fonts = 1
 map <C-m> :CtrlPMRU<cr>
 nmap gw        :InteractiveWindow<CR>
 
-set fillchars+=vert:│
-hi VertSplit ctermbg=NONE guibg=NONE
+if !has("gui_running")
+   set fillchars+=vert:│
+endif
 
 let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"

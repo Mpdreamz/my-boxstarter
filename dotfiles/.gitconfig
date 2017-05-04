@@ -7,7 +7,6 @@
 	autocrlf = input
 	preloadindex = true
 	fscache = true
-	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	ui = true
 [color]
@@ -21,9 +20,9 @@
 	whitespace = red reverse
 [color "diff-highlight"]
 	oldNormal = red bold
-	oldHighlight = "red bold 52"
-	newNormal = "green bold"
-	newHighlight = "green bold 22"
+	oldHighlight = white bold red
+	newNormal = green bold
+	newHighlight = white bold 22
 [credential]
 	helper = cache --timeout=3600
 [merge]
